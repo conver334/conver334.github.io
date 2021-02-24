@@ -23,30 +23,33 @@
     var NexT = window.NexT || {};
     var CONFIG = {"hostname":"conver334.github.io","root":"/","images":"/images","scheme":"Muse","version":"8.2.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":"ture","trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
   </script>
-<meta name="description" content="又叒开小号了 ^ _ ^">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Conver">
-<meta property="og:url" content="https://conver334.github.io/index.html">
+<meta name="description" content="A . Three swimmers题解 找p离a,b,c倍数最近的那个 12345678910111213141516#include&lt;bits&#x2F;stdc++.h&gt;using namespace std;long long mod&#x3D;1000000007;long long ans,a,b,c,p;int main(){	int t;	scanf(&quot;%d&quot;,&amp;t);	while">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[CF1492] Codeforces Round #704 (Div. 2)">
+<meta property="og:url" content="https://conver334.github.io/2021/02/24/cf1492/index.html">
 <meta property="og:site_name" content="Conver">
-<meta property="og:description" content="又叒开小号了 ^ _ ^">
+<meta property="og:description" content="A . Three swimmers题解 找p离a,b,c倍数最近的那个 12345678910111213141516#include&lt;bits&#x2F;stdc++.h&gt;using namespace std;long long mod&#x3D;1000000007;long long ans,a,b,c,p;int main(){	int t;	scanf(&quot;%d&quot;,&amp;t);	while">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-02-24T07:32:32.000Z">
+<meta property="article:modified_time" content="2021-02-24T12:42:43.427Z">
 <meta property="article:author" content="Conver">
+<meta property="article:tag" content="codeforces">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://conver334.github.io/">
+<link rel="canonical" href="https://conver334.github.io/2021/02/24/cf1492/">
 
 
 <script class="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : true,
-    isPost : false,
+    isHome : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
-<title>Conver</title>
+<title>[CF1492] Codeforces Round #704 (Div. 2) | Conver</title>
   
 
 
@@ -173,7 +176,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -186,6 +189,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#A-Three-swimmers"><span class="nav-number">1.</span> <span class="nav-text">A . Three swimmers</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#B-Card-Deck"><span class="nav-number">2.</span> <span class="nav-text">B . Card Deck</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C-Maximum-width"><span class="nav-number">3.</span> <span class="nav-text">C . Maximum width</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#D-Genius%E2%80%99s-Gambit"><span class="nav-number">4.</span> <span class="nav-text">D . Genius’s Gambit</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#E-Almost-Fault-Tolerant-Database"><span class="nav-number">5.</span> <span class="nav-text">E . Almost Fault-Tolerant Database</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -277,16 +281,17 @@
 </noscript>
 
 
-    <div class="main-inner index posts-expand">
+    <div class="main-inner post posts-expand">
 
-    
+
+  
 
 
 <div class="post-block">
   
   
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://conver334.github.io/2021/02/24/cf1492/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -299,9 +304,9 @@
       <meta itemprop="name" content="Conver">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/02/24/cf1492/" class="post-title-link" itemprop="url">[CF1492] Codeforces Round #704 (Div. 2)</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          [CF1492] Codeforces Round #704 (Div. 2)
+        </h1>
 
         <div class="post-meta-container">
           <div class="post-meta">
@@ -334,7 +339,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h2 id="A-Three-swimmers"><a href="#A-Three-swimmers" class="headerlink" title="A . Three swimmers"></a>A . Three swimmers</h2><p><strong>题解</strong></p>
+        <h2 id="A-Three-swimmers"><a href="#A-Three-swimmers" class="headerlink" title="A . Three swimmers"></a>A . Three swimmers</h2><p><strong>题解</strong></p>
 <p>找p离a,b,c倍数最近的那个</p>
 <figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">long</span> <span class="keyword">long</span> mod=<span class="number">1000000007</span>;</span><br><span class="line"><span class="keyword">long</span> <span class="keyword">long</span> ans,a,b,c,p;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>{</span><br><span class="line">	<span class="keyword">int</span> t;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;t);</span><br><span class="line">	<span class="keyword">while</span>(t--){</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%lld%lld%lld%lld"</span>,&amp;p,&amp;a,&amp;b,&amp;c);</span><br><span class="line">		ans=a-((p<span class="number">-1</span>)%a+<span class="number">1</span>);</span><br><span class="line">		ans=min(ans,b-((p<span class="number">-1</span>)%b+<span class="number">1</span>));</span><br><span class="line">		ans=min(ans,c-((p<span class="number">-1</span>)%c+<span class="number">1</span>));</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,ans);</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 <h2 id="B-Card-Deck"><a href="#B-Card-Deck" class="headerlink" title="B . Card Deck"></a>B . Card Deck</h2><p><strong>题解</strong>：</p>
@@ -384,7 +389,6 @@
 <li>有3个不同，如果有一位所有3个的都有且为同一个值，则改这一位，否则等同于第三种情况，枚举改哪两位哪个值，</li>
 </ol>
 
-      
     </div>
 
     
@@ -392,81 +396,42 @@
     
 
     <footer class="post-footer">
-        <div class="post-eof"></div>
-      
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="/atom.xml">
+          <span class="icon">
+            <i class="fa fa-rss"></i>
+          </span>
+
+          <span class="label">RSS</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/codeforces/" rel="tag"># codeforces</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/02/21/hello-world/" rel="prev" title="Let's do something interesting.">
+                  <i class="fa fa-chevron-left"></i> Let's do something interesting.
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
     </footer>
   </article>
 </div>
 
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://conver334.github.io/2021/02/21/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/conver.jpg">
-      <meta itemprop="name" content="Conver">
-      <meta itemprop="description" content="又叒开小号了 ^ _ ^">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Conver">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/02/21/hello-world/" class="post-title-link" itemprop="url">Let's do something interesting.</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-02-21 10:20:28" itemprop="dateCreated datePublished" datetime="2021-02-21T10:20:28+08:00">2021-02-21</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-02-24 12:57:25" itemprop="dateModified" datetime="2021-02-24T12:57:25+08:00">2021-02-24</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
 
 
 

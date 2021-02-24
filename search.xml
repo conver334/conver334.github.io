@@ -1,20 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<search> 
-  
-  
-    
-    <entry>
-      <title>Let&#39;s do something interesting.</title>
-      <link href="2021/02/21/hello-world/"/>
-      <url>2021/02/21/hello-world/</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-      
-      
-    </entry>
-    
-    
-  
-  
+<search>
+  <entry>
+    <title>Let&#39;s do something interesting.</title>
+    <url>/2021/02/21/hello-world/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>[CF1492] Codeforces Round #704 (Div. 2)</title>
+    <url>/2021/02/24/cf1492/</url>
+    <content><![CDATA[<h2 id="A-Three-swimmers"><a href="#A-Three-swimmers" class="headerlink" title="A . Three swimmers"></a>A . Three swimmers</h2><p><strong>题解</strong></p>
+<p>找p离a,b,c倍数最近的那个</p>
+<figure class="highlight c++"><table><tbody><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">long</span> <span class="keyword">long</span> mod=<span class="number">1000000007</span>;</span><br><span class="line"><span class="keyword">long</span> <span class="keyword">long</span> ans,a,b,c,p;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>{</span><br><span class="line">	<span class="keyword">int</span> t;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;t);</span><br><span class="line">	<span class="keyword">while</span>(t--){</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%lld%lld%lld%lld"</span>,&amp;p,&amp;a,&amp;b,&amp;c);</span><br><span class="line">		ans=a-((p<span class="number">-1</span>)%a+<span class="number">1</span>);</span><br><span class="line">		ans=min(ans,b-((p<span class="number">-1</span>)%b+<span class="number">1</span>));</span><br><span class="line">		ans=min(ans,c-((p<span class="number">-1</span>)%c+<span class="number">1</span>));</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,ans);</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="B-Card-Deck"><a href="#B-Card-Deck" class="headerlink" title="B . Card Deck"></a>B . Card Deck</h2><p><strong>题解</strong>：</p>
+<p>使值大的尽量在底下，每次取都取到当前剩的最大的一个</p>
+<figure class="highlight c++"><table><tbody><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">long</span> <span class="keyword">long</span> mod=<span class="number">1000000007</span>;</span><br><span class="line"><span class="keyword">int</span> <span class="keyword">const</span> maxn=<span class="number">1e5</span>+<span class="number">7</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line">ll n,a[maxn],ne[maxn],ans;</span><br><span class="line"><span class="keyword">int</span> p[maxn];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>{</span><br><span class="line">	<span class="keyword">int</span> t;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;t);</span><br><span class="line">	<span class="keyword">while</span>(t--){</span><br><span class="line"></span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%lld"</span>,&amp;n);</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)<span class="built_in">scanf</span>(<span class="string">"%lld"</span>,&amp;a[i]);</span><br><span class="line">		p[<span class="number">1</span>]=<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=n;i++){</span><br><span class="line">			<span class="keyword">if</span>(a[i]&gt;a[p[i<span class="number">-1</span>]])p[i]=i;</span><br><span class="line">			<span class="keyword">else</span> p[i]=p[i<span class="number">-1</span>];</span><br><span class="line">		}</span><br><span class="line">		<span class="keyword">int</span> qwq=n,tot=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">while</span>(qwq&gt;<span class="number">0</span>){</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> i=p[qwq];i&lt;=qwq;i++){</span><br><span class="line">				ne[++tot]=a[i];</span><br><span class="line">			}</span><br><span class="line">			qwq=p[qwq]<span class="number">-1</span>;</span><br><span class="line">		}</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;n;i++){</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"%lld "</span>,ne[i]);</span><br><span class="line">		}</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,ne[n]);</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="C-Maximum-width"><a href="#C-Maximum-width" class="headerlink" title="C . Maximum width"></a>C . Maximum width</h2><p><strong>题意</strong>：</p>
+<p>给出长度为n的字符串s，长度为m的字符串t</p>
+<p>求构造一个长度m递增数列p，</p>
+<script type="math/tex; mode=display">1 \leq p_{1} \le p_{2} \le \ldots \le p_{m} \leq n</script><p>满足 $s_{pi} = t_i$ , p的宽度定义为 $\max _{1 \leq i&lt;m}\left(p_{i+1}-p_{i}\right)$，即最大的相 邻的差</p>
+<p>保证一定能构造出一组p，求p的最大宽度</p>
+<p><strong>数据范围</strong>：</p>
+<script type="math/tex; mode=display">\left( 2 \leq m \leq n \leq 2 \cdot 10^{5}\right)</script><p><strong>题解</strong>：</p>
+<p>使相邻的pi 和 pi+1 差最大，就要使pi取尽量靠左的s中的位置，pi+1取尽量靠右的s中的位置</p>
+<p>为了维护p递增，先从左向右扫一遍维护出最小值pl，再从右向左扫一遍维护出最大值pr，再扫一遍枚举分界点  <script type="math/tex">ans=max \left( pr[i+1]-pl[i] \right)</script></p>
+<figure class="highlight c++"><table><tbody><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> <span class="keyword">const</span> maxn2=<span class="number">2e5</span>+<span class="number">7</span>;</span><br><span class="line"><span class="keyword">int</span> l[maxn2],r[maxn2],n,m;</span><br><span class="line"><span class="built_in">string</span> s1,s2;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>{</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;m);</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;s1&gt;&gt;s2;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">int</span> ans=-maxn2;</span><br><span class="line">	<span class="keyword">int</span> qwq=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;m;j++){</span><br><span class="line">		<span class="keyword">while</span>(s1[qwq]!=s2[j])qwq++;</span><br><span class="line">		l[j]=qwq;</span><br><span class="line">		qwq++;</span><br><span class="line">	}</span><br><span class="line">	qwq=n<span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> j=m<span class="number">-1</span>;j&gt;=<span class="number">0</span>;j--){</span><br><span class="line">		<span class="keyword">while</span>(s1[qwq]!=s2[j])qwq--;</span><br><span class="line">		r[j]=qwq;</span><br><span class="line">		qwq--;</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;m<span class="number">-1</span>;i++){</span><br><span class="line">		ans=max(r[i+<span class="number">1</span>]-l[i],ans);</span><br><span class="line">	}</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,ans);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p><strong>比赛时</strong>：</p>
+<p>我居然忘记了p是递增的，直接求了pi+1在s中的最右减去，pi在s中的最左。。。。</p>
+<p>假题意代师。。。</p>
+<h2 id="D-Genius’s-Gambit"><a href="#D-Genius’s-Gambit" class="headerlink" title="D . Genius’s Gambit"></a>D . Genius’s Gambit</h2><p><strong>题意</strong>：</p>
+<p>构造两个含a个0，b个1的二进制数x,y(x&gt;=y)，两者之差的二进制数含k个1。</p>
+<p><strong>数据范围</strong>：<script type="math/tex">(0≤a, 1≤b; 0≤k≤a+b≤2⋅10^5)</script></p>
+<p><strong>题解</strong>：</p>
+<p>两个错位的1和0，中间全部相同，能减出一组1，例如：</p>
+<script type="math/tex; mode=display">11110000-\\01110001=\\01111111</script><p>利用这个规律可以构造出所有a+b-2&gt;=k  （k,a&gt;=1,b&gt;=2）的情况</p>
+<p>特判：只有0个0的，或者1个1（因为不允许前导零），不能构造出1。k=0时一定能满足。</p>
+<figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line">a,b,k=<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split())</span><br><span class="line"><span class="keyword">if</span>(k==<span class="number">0</span>):</span><br><span class="line">    s=<span class="string">'1'</span>*b+<span class="string">'0'</span>*a</span><br><span class="line">    print(<span class="string">"Yes\n"</span>+s+<span class="string">"\n"</span>+s)</span><br><span class="line"><span class="keyword">elif</span>(a==<span class="number">0</span>):</span><br><span class="line">    print(<span class="string">"No"</span>);</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="keyword">if</span> a+b-<span class="number">2</span>&lt;k <span class="keyword">or</span> b==<span class="number">1</span>:</span><br><span class="line">        print(<span class="string">"No"</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        s=<span class="string">'1'</span>*(b-<span class="number">1</span>)+<span class="string">'0'</span>*(a-<span class="number">1</span>)</span><br><span class="line">        print(<span class="string">"Yes"</span>)</span><br><span class="line">        print(s[:a+b-k-<span class="number">1</span>]+<span class="string">'1'</span>+s[a+b-k-<span class="number">1</span>:]+<span class="string">'0'</span>)</span><br><span class="line">        print(s[:a+b-k-<span class="number">1</span>]+<span class="string">'0'</span>+s[a+b-k-<span class="number">1</span>:]+<span class="string">'1'</span>)</span><br><span class="line">        </span><br></pre></td></tr></tbody></table></figure>
+<p><strong>比赛时</strong>：</p>
+<p>没有想到只要错位中间一样就可以了。。以为要分0和1讨论</p>
+<p>没有想到k=0一定满足</p>
+<p>没有注意到1个1，或者0个0都不能构造出来。</p>
+<p>比完赛简直是面向样例编程。。。</p>
+<h2 id="E-Almost-Fault-Tolerant-Database"><a href="#E-Almost-Fault-Tolerant-Database" class="headerlink" title="E . Almost Fault-Tolerant Database"></a>E . Almost Fault-Tolerant Database</h2><p><strong>题意</strong>：</p>
+<p>n个m长的数组，</p>
+<p>构造一个数组，满足它改变最多两个值可以得到任意一个给出的n个数组</p>
+<p>不存在输出no</p>
+<p><strong>数据范围</strong>：</p>
+<script type="math/tex; mode=display">(2 \leq n ; 1 \leq m ; n \cdot m \leq 250000)</script><p><strong>题解</strong>：</p>
+<p>网上看到的。枚举构造</p>
+<p>假设以第一个数组为模板，跟后面的作对比</p>
+<ol>
+<li><p>有数组跟它&gt;4个不同，则无解</p>
+</li>
+<li><p>所有的&lt;=两个不同，则直接输出第一个数组</p>
+</li>
+<li><p>有4个不同，则第一个数组至少要改2位，枚举改的两位和改的值</p>
+</li>
+<li>有3个不同，如果有一位所有3个的都有且为同一个值，则改这一位，否则等同于第三种情况，枚举改哪两位哪个值，</li>
+</ol>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>codeforces</tag>
+      </tags>
+  </entry>
 </search>
