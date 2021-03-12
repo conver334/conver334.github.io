@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/Raining64.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/Raining32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/Raining16.png">
+  <link rel="mask-icon" href="/images/Raining64.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.2/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"conver334.github.io","root":"/","images":"/images","scheme":"Muse","version":"8.2.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":"ture","trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
+  </script>
+<meta name="description" content="A 题意： 一颗树，每个点点权ti，边权wi。输出n行，每行代表第x个点，它到所有点的 两点权和*路径 之和 \[ ans_x&#x3D;\sum_{v&#x3D;1}^{n} (t_x+t_v)d_{x,v}\] 数据范围 1&lt;&#x3D;k&lt;&#x3D;n&lt;&#x3D;200000 题解： 树形dp&#x2F;树分治。想了两种转移方式 planA（简单）： \(ans_x\)由两部分构成，根节点 * 路径和+子节点 * 对应路径的和">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2019 ICPC Pacific Northwest Region Conteste">
+<meta property="og:url" content="https://conver334.github.io/2021/03/12/2019icpcnorthwest/index.html">
+<meta property="og:site_name" content="Conver">
+<meta property="og:description" content="A 题意： 一颗树，每个点点权ti，边权wi。输出n行，每行代表第x个点，它到所有点的 两点权和*路径 之和 \[ ans_x&#x3D;\sum_{v&#x3D;1}^{n} (t_x+t_v)d_{x,v}\] 数据范围 1&lt;&#x3D;k&lt;&#x3D;n&lt;&#x3D;200000 题解： 树形dp&#x2F;树分治。想了两种转移方式 planA（简单）： \(ans_x\)由两部分构成，根节点 * 路径和+子节点 * 对应路径的和">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://conver334.github.io/images/210312_2.jpg">
+<meta property="og:image" content="https://conver334.github.io/images/210312_1.jpg">
+<meta property="article:published_time" content="2021-03-12T02:07:13.000Z">
+<meta property="article:modified_time" content="2021-03-12T15:40:30.876Z">
+<meta property="article:author" content="Conver">
+<meta property="article:tag" content="icpc">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://conver334.github.io/images/210312_2.jpg">
+
+
+<link rel="canonical" href="https://conver334.github.io/2021/03/12/2019icpcnorthwest/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+<title>2019 ICPC Pacific Northwest Region Conteste | Conver</title>
+  
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end -->
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Conver</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+        <li class="menu-item menu-item-schedule"><a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>日程表</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#a"><span class="nav-number">1.</span> <span class="nav-text">A</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#b"><span class="nav-number">2.</span> <span class="nav-text">B</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#c"><span class="nav-number">3.</span> <span class="nav-text">C</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#d"><span class="nav-number">4.</span> <span class="nav-text">D</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#e"><span class="nav-number">5.</span> <span class="nav-text">E</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#f"><span class="nav-number">6.</span> <span class="nav-text">F</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#g"><span class="nav-number">7.</span> <span class="nav-text">G</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#h"><span class="nav-number">8.</span> <span class="nav-text">H</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#i"><span class="nav-number">9.</span> <span class="nav-text">I</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#j"><span class="nav-number">10.</span> <span class="nav-text">J</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#k"><span class="nav-number">11.</span> <span class="nav-text">K</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#l"><span class="nav-number">12.</span> <span class="nav-text">L</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#m"><span class="nav-number">13.</span> <span class="nav-text">M</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Conver"
+      src="/images/conver.jpg">
+  <p class="site-author-name" itemprop="name">Conver</p>
+  <div class="site-description" itemprop="description">又叒开小号了 ^ _ ^</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/conver334" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;conver334" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/conver334@gmail.com" title="E-Mail → conver334@gmail.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll site-overview-item animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+      友链
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://zzy991212.github.io/" title="https:&#x2F;&#x2F;zzy991212.github.io&#x2F;" rel="noopener" target="_blank">zzy</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://blog.csdn.net/weixin_43811226/" title="https:&#x2F;&#x2F;blog.csdn.net&#x2F;weixin_43811226&#x2F;" rel="noopener" target="_blank">YuanSnowing</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://maomaoyu804.github.io/" title="http:&#x2F;&#x2F;maomaoyu804.github.io" rel="noopener" target="_blank">毛毛雨</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://kongjune.com/" title="http:&#x2F;&#x2F;kongjune.com" rel="noopener" target="_blank">kongjune</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://epeenofront.com/" title="http:&#x2F;&#x2F;epeenofront.com" rel="noopener" target="_blank">epeenofront</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://cardiffle.github.io/" title="https:&#x2F;&#x2F;cardiffle.github.io&#x2F;" rel="noopener" target="_blank">Vicente</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://www.callmelare.cn/blog/" title="http:&#x2F;&#x2F;www.callmelare.cn&#x2F;blog&#x2F;" rel="noopener" target="_blank">Lare</a>
+        </li>
+    </ul>
+  </div>
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://conver334.github.io/2021/03/12/2019icpcnorthwest/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/conver.jpg">
+      <meta itemprop="name" content="Conver">
+      <meta itemprop="description" content="又叒开小号了 ^ _ ^">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Conver">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          2019 ICPC Pacific Northwest Region Conteste
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-03-12 10:07:13 / 修改时间：23:40:30" itemprop="dateCreated datePublished" datetime="2021-03-12T10:07:13+08:00">2021-03-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/algorithm/" itemprop="url" rel="index"><span itemprop="name">algorithm</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="a">A</h2>
+<p><strong>题意</strong>：</p>
+<p>一颗树，每个点点权ti，边权wi。输出n行，每行代表第x个点，它到所有点的 两点权和*路径 之和</p>
+<p><span class="math display">\[ ans_x=\sum_{v=1}^{n} (t_x+t_v)d_{x,v}\]</span></p>
+<p><strong>数据范围</strong></p>
+<p>1&lt;=k&lt;=n&lt;=200000</p>
+<p><strong>题解</strong>：</p>
+<p>树形dp/树分治。想了两种转移方式</p>
+<p>planA（简单）：</p>
+<p><span class="math inline">\(ans_x\)</span>由两部分构成，根节点 * 路径和+子节点 * 对应路径的和</p>
+<p>设该树的根节点为 <span class="math inline">\(x,\)</span> <span class="math display">\[
+\begin{array}{l}
+a_{x}=\sum_{v=1}^{n} d_{x, v} \\
+b_{x}=\sum_{v=1}^{n} t_{v} d_{x, v}
+\end{array}\\
+ans_x=t_xa_x+b_x
+\]</span> 结点y与x相邻，设以y为根节点的子树大小为<span class="math inline">\(tot_y\)</span>，子树点权值和为<span class="math inline">\(sum_y\)</span>，总点数为n，总点权和为SUM，则从x转到子节点y的方程为：</p>
+<p><span class="math display">\[\begin{array}{l}
+a_{y}=a_{x}+w_{xy}(n-2tot_y) \\
+b_{x}=b_{x}+w_{xy}(SUM-2sum_y)
+\end{array}\\\]</span></p>
+<p>转移解释：</p>
+<p>从x到y，橘色边w造成的影响有，黑色部分的点路径都减去w，红色部分的点路径都加上w</p>
+<figure>
+<img src="/images/210312_2.jpg" alt="tree_divide_and_conquer"><figcaption aria-hidden="true">tree_divide_and_conquer</figcaption>
+</figure>
+<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> <span class="keyword">const</span> maxn=<span class="number">1e5</span>+<span class="number">10</span>;</span><br><span class="line"><span class="keyword">int</span> tot,head[maxn],n,m,val[maxn],tson[maxn],SUM;</span><br><span class="line"><span class="keyword">long</span> <span class="keyword">long</span> aa[maxn],bb[maxn],sum[maxn],ans[maxn];</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">edge</span>{</span></span><br><span class="line">    <span class="keyword">int</span> v,nxt;</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> w;</span><br><span class="line">}e[maxn&lt;&lt;<span class="number">1</span>];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">build</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y,<span class="keyword">int</span> z)</span></span>{</span><br><span class="line">    e[++tot].v=y;</span><br><span class="line">    e[tot].nxt=head[x];</span><br><span class="line">    e[tot].w=z;</span><br><span class="line">    head[x]=tot; </span><br><span class="line">}</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">TreeSplitDfs1</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> f)</span></span>{</span><br><span class="line">    tson[x]=<span class="number">1</span>;</span><br><span class="line">    sum[x]=val[x];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=head[x];i;i=e[i].nxt){</span><br><span class="line">        <span class="keyword">int</span> v=e[i].v;</span><br><span class="line">        <span class="keyword">if</span>(v==f)<span class="keyword">continue</span>;</span><br><span class="line">        TreeSplitDfs1(v,x);</span><br><span class="line">        tson[x]+=tson[v];</span><br><span class="line">        sum[x]+=sum[v];</span><br><span class="line">        aa[<span class="number">1</span>]+=e[i].w*tson[v];</span><br><span class="line">        bb[<span class="number">1</span>]+=e[i].w*sum[v];</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">TreeSplitDfs2</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> f)</span></span>{</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=head[x];i;i=e[i].nxt){</span><br><span class="line">        <span class="keyword">int</span> v=e[i].v;</span><br><span class="line">        <span class="keyword">if</span>(v==f)<span class="keyword">continue</span>;</span><br><span class="line">        aa[v]=aa[x]+e[i].w*(n<span class="number">-2</span>*tson[v]);</span><br><span class="line">        bb[v]=bb[x]+e[i].w*(SUM<span class="number">-2</span>*sum[v]);</span><br><span class="line">        ans[v]=val[v]*aa[v]+bb[v];</span><br><span class="line">        TreeSplitDfs2(v,x);</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>{</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">    tot=<span class="number">0</span>;</span><br><span class="line">    <span class="built_in">memset</span>(head,<span class="number">0</span>,<span class="keyword">sizeof</span>(<span class="keyword">int</span>)*(n+<span class="number">5</span>));</span><br><span class="line">    <span class="keyword">int</span> a,b,c;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++){</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;val[i]);</span><br><span class="line">        SUM += val[i];</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;n;i++){</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>,&amp;a,&amp;b,&amp;c);</span><br><span class="line">        build(a,b,c);</span><br><span class="line">        build(b,a,c);</span><br><span class="line">    }</span><br><span class="line">    TreeSplitDfs1(<span class="number">1</span>,<span class="number">0</span>);</span><br><span class="line">    ans[<span class="number">1</span>]=val[<span class="number">1</span>]*aa[<span class="number">1</span>]+bb[<span class="number">1</span>];</span><br><span class="line">    TreeSplitDfs2(<span class="number">1</span>,<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)<span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,ans[i]);<span class="comment">//注意 long long </span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>planB（复杂）:</p>
+<p><span class="math inline">\(ans_x\)</span>由两部分构成 ： 所有边 * 子树结点和 + 边 * 子节点个数 * 根节点权。算了转移太难写了，维护的东西还麻烦。。。不写了</p>
+<h2 id="b">B</h2>
+<p><strong>题意</strong>：给出n个数的序列，数字范围为1~k，找k个数都包含的最小子序列，保证有解。</p>
+<p><strong>数据范围</strong></p>
+<p>1&lt;=k&lt;=n&lt;=200000</p>
+<p><strong>题解</strong>：贪心。我们肯定希望越小的元素放在前面越好，大的元素如果还有就把它尽量往后放，用栈来维护。</p>
+<p>如果如果一个数在栈内，不管这个数。一个栈如果当前数小于栈顶，栈顶元素在后面还有的话，就把栈顶弹出，重复到不再弹栈，把这个数压进去。</p>
+<p>结果为栈中的序列。</p>
+<p>注意：在栈中的元素不要再用它来做弹栈操作了。因为它出现在前面更优。如下图：</p>
+<figure>
+<img src="/images/210312_1.jpg" alt="pop stock"><figcaption aria-hidden="true">pop stock</figcaption>
+</figure>
+<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stack&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> <span class="keyword">const</span> maxn=<span class="number">200005</span>;</span><br><span class="line"><span class="keyword">int</span> n,k,ans[maxn],tot,cou[maxn],a[maxn],g[maxn];</span><br><span class="line"><span class="built_in">stack</span>&lt;<span class="keyword">int</span>&gt;s;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>{</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;k);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++){</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;a[i]);</span><br><span class="line">		cou[a[i]]++;</span><br><span class="line">	}</span><br><span class="line">	tot=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++){</span><br><span class="line">		<span class="keyword">if</span>(g[a[i]]&gt;<span class="number">0</span>)<span class="keyword">continue</span>;<span class="comment">//如果是栈里已经有的，说明在前面更有意义，不要用它来弹出栈里的东西了</span></span><br><span class="line">		<span class="keyword">if</span>(!s.empty()){</span><br><span class="line">			<span class="keyword">int</span> u=s.top();</span><br><span class="line">			<span class="keyword">while</span>(cou[u]&gt;<span class="number">0</span>&amp;&amp;u&gt;=a[i]){</span><br><span class="line">				s.pop();</span><br><span class="line">				g[u]--;</span><br><span class="line">				<span class="keyword">if</span>(s.empty())<span class="keyword">break</span>;</span><br><span class="line">				u=s.top();</span><br><span class="line">			}	</span><br><span class="line">		}</span><br><span class="line">		s.push(a[i]);</span><br><span class="line">		g[a[i]]++;</span><br><span class="line">		cou[a[i]]--;</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=k;i&gt;<span class="number">0</span>;i--){</span><br><span class="line">		ans[i]=s.top();</span><br><span class="line">		s.pop();</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;k;i++){</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%d "</span>,ans[i]);</span><br><span class="line">	}</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,ans[k]);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">9 8</span></span><br><span class="line"><span class="comment">4 3 5 8 3 1 6 7 2*/</span></span><br></pre></td></tr></tbody></table></figure>
+<h2 id="c">C</h2>
+<p><strong>题意</strong>：</p>
+<p>对图的边染色，使从1到n的路径中颜色变化最少的路径颜色变化最多。（最大化最小值）</p>
+<p><strong>数据范围</strong>：</p>
+<p>2&lt;=n&lt;=1e5 1 &lt;= m &lt;= 1e5</p>
+<p><strong>题解</strong>：</p>
+<p>bfs 染色 ，交替染色，当前点的出点中没染色的染为相反颜色，边跟出点同色。</p>
+<p>答案：顺便用bfs找最短路，如果最短路为k，那最大变k-1次。</p>
+<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> <span class="keyword">const</span> maxn=<span class="number">1e5</span>+<span class="number">10</span>;</span><br><span class="line"><span class="keyword">int</span> tot,head[maxn],n,m,val[maxn],dis[maxn];</span><br><span class="line"><span class="keyword">bool</span> vis[maxn];</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">edge</span>{</span></span><br><span class="line">    <span class="keyword">int</span> v,nxt;</span><br><span class="line">}e[maxn&lt;&lt;<span class="number">1</span>];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">build</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>{</span><br><span class="line">    e[++tot].v=y;</span><br><span class="line">    e[tot].nxt=head[x];</span><br><span class="line">    head[x]=tot;</span><br><span class="line">}</span><br><span class="line"><span class="built_in">queue</span>&lt;<span class="keyword">int</span>&gt;q;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>{</span><br><span class="line"></span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;m);</span><br><span class="line">    tot=<span class="number">0</span>;</span><br><span class="line">    <span class="built_in">memset</span>(head,<span class="number">0</span>,<span class="keyword">sizeof</span>(<span class="keyword">int</span>)*(n+<span class="number">5</span>));</span><br><span class="line">    <span class="keyword">int</span> a,b;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++){</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;a,&amp;b);</span><br><span class="line">        build(a,b);</span><br><span class="line">        build(b,a);</span><br><span class="line">    }</span><br><span class="line">    q.push(<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">int</span> x;</span><br><span class="line">    vis[<span class="number">1</span>]=<span class="number">1</span>;</span><br><span class="line">    dis[<span class="number">1</span>]=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(!q.empty()){</span><br><span class="line">        x=q.front();q.pop();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=head[x];i;i=e[i].nxt){</span><br><span class="line">            <span class="keyword">int</span> v=e[i].v;</span><br><span class="line">            <span class="keyword">if</span>(vis[v])<span class="keyword">continue</span>;</span><br><span class="line">            vis[v]=<span class="number">1</span>;</span><br><span class="line">            q.push(v);</span><br><span class="line">            dis[v]=dis[x]+<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span>(v==n)<span class="keyword">break</span>;</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,dis[n]<span class="number">-1</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="d">D</h2>
+<p><strong>题意</strong>：</p>
+<p>问从A变到B的最小操作数，可以执行两个操作： 1.把A/2，只有A是奇数时可以 2.把A+1</p>
+<p><strong>数据范围</strong>：</p>
+<p>​ <span class="math display">\[ 1 \leq a,b  \leq10^{9}\]</span></p>
+<p><strong>题解</strong>：</p>
+<p>暴力。a&lt;b输出b-a,a&gt;b就一直除或加变到小于</p>
+<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> <span class="keyword">const</span> maxn=<span class="number">1e5</span>+<span class="number">10</span>;</span><br><span class="line"><span class="keyword">long</span> <span class="keyword">long</span> a,b;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>{</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%lld%lld"</span>,&amp;a,&amp;b);</span><br><span class="line">	<span class="keyword">if</span>(a&lt;b)<span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,b-a);</span><br><span class="line">	<span class="keyword">else</span>{</span><br><span class="line">		<span class="keyword">long</span> <span class="keyword">long</span> ans=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">while</span>(a&gt;b){</span><br><span class="line">			<span class="keyword">if</span>(a%<span class="number">2</span>==<span class="number">0</span>)a/=<span class="number">2</span>;</span><br><span class="line">			<span class="keyword">else</span> a++;</span><br><span class="line">			ans++;</span><br><span class="line">		}</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,ans+(b-a));</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="e">E</h2>
+<p><strong>题意</strong>：</p>
+<p>给出字符串s，求所有字母不相同的子序列数量（空字符串也算） 答案取模11 092 019.</p>
+<p><strong>数据范围</strong>：</p>
+<p>​ <span class="math display">\[ 1 \leq len(s)  \leq10^{5}\]</span></p>
+<p><strong>题解</strong>：</p>
+<p>记录每个字母的数量num<a href="#i">i</a>, <span class="math display">\[ans= \prod_{i=a}^{z} num[i]+1\]</span></p>
+<p>反正每个字母最多选一次</p>
+<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> <span class="keyword">const</span> maxn=<span class="number">1e5</span>+<span class="number">10</span>,mod=<span class="number">11092019</span>;</span><br><span class="line"><span class="keyword">char</span> s[maxn];</span><br><span class="line"><span class="keyword">long</span> <span class="keyword">long</span>  cou[<span class="number">600</span>];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>{</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%s"</span>,s);</span><br><span class="line">	<span class="keyword">int</span> len=<span class="built_in">strlen</span>(s);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;len;i++){</span><br><span class="line">		cou[(<span class="keyword">int</span>)s[i]]++;</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">long</span> <span class="keyword">long</span> ans=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="string">'a'</span>;i&lt;=<span class="string">'z'</span>;i++)ans=(ans*(cou[i]+<span class="number">1</span>))%mod;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,ans);</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="f">F</h2>
+<p>求n个数的排列，满足：第k小的，有m个数在原位（pi=i）</p>
+<h2 id="g">G</h2>
+<p>？？qwq没太看明白</p>
+<h2 id="h">H</h2>
+<p>？？qwq？？qwq</p>
+<h2 id="i">I</h2>
+<p><strong>题意</strong>：</p>
+<p>n个字符串(字符串中没有重复的字母，隐含字符串最长26)，找到一个最大子集，使其中两两字符串x,y不能通过交换1对字母（不需要相邻）成为对方</p>
+<p>输出最大子集大小</p>
+<p><strong>数据范围</strong>：</p>
+<p>​ <span class="math display">\[ 1 \leq N  \leq 500\]</span></p>
+<p><strong>题解</strong>：</p>
+<p>二分图最大独立集。</p>
+<p>预处理：哪些字符串可以相互到达能暴力对比求出，把能相互转化到的字符串连一条边，问题变为找一般图的最大独立集。或者：把不能到达的字符串之间连边，问题变为找一般图的最大完全子图。</p>
+<p>独立集：任意两点之间没有连边。</p>
+<p>完全图：任意两点之间右边。</p>
+<p>一般图的独立集或完全图时间复杂度过高，转化为二分图。</p>
+<h2 id="j">J</h2>
+<p>给定Ti ,si ,ai最大化</p>
+<p><span class="math display">\[\sum_{1}^{n}\max \left(0, T_{i}-s_{i} \cdot \operatorname{dist}\left(a_{i}, a\right)\right) \]</span></p>
+<p>dist(ai,a) 是ai到a最小转动的弧度</p>
+<h2 id="k">K</h2>
+<p>有n个字节的内存初始为0，下标从1到n</p>
+<p>有m条数据 xi</p>
+<p>询问q次三种操作之一：</p>
+<ol type="1">
+<li>1 i p 把第i条数据放到内存p 到p+len(xi)-1位置,保证操作有效不会溢出</li>
+<li>2 p 询问内存p位置是什么数</li>
+<li>i l r 把xi中l到r位置数字都加1，对256取模</li>
+</ol>
+<h2 id="l">L</h2>
+<p>定义一种新运算 加法没有进位，乘法运算中也无进位 给一个N，求最小的a满足a⊗a=N ，如果没有输出-1</p>
+<h2 id="m">M</h2>
+<p>？？qwq</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/icpc/" rel="tag"># icpc</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/02/25/2018icpcsingapore/" rel="prev" title="2018 ICPC Asia Singapore Regional Conteste">
+                  <i class="fa fa-chevron-left"></i> 2018 ICPC Asia Singapore Regional Conteste
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/03/12/tip/" rel="next" title="tip">
+                  tip <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Conver</span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  <script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'none'
+      },
+      options: {
+        renderActions: {
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              const target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    const script = document.createElement('script');
+    script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-mml-chtml.js';
+    script.defer = true;
+    document.head.appendChild(script);
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.typesetClear();
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+
+
+</body>
+</html>
