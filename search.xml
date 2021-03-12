@@ -62,6 +62,9 @@
 <li><p>有3个不同，如果有一位所有3个的都有且为同一个值，则改这一位，否则等同于第三种情况，枚举改哪两位哪个值，</p></li>
 </ol>
 ]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
       <tags>
         <tag>codeforces</tag>
       </tags>
@@ -119,6 +122,9 @@
 <p>哈哈哈</p>
 <p>哈哈哈</p>
 ]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
       <tags>
         <tag>icpc</tag>
       </tags>
@@ -280,6 +286,9 @@ b_{x}=b_{x}+w_{xy}(SUM-2sum_y)
 <h2 id="m">M</h2>
 <p>？？qwq</p>
 ]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
       <tags>
         <tag>icpc</tag>
       </tags>
@@ -294,5 +303,8 @@ b_{x}=b_{x}+w_{xy}(SUM-2sum_y)
 </ol>
 <p>哈哈哈哈</p>
 ]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
   </entry>
 </search>
