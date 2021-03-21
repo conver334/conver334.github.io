@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/Raining64.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/Raining32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/Raining16.png">
+  <link rel="mask-icon" href="/images/Raining64.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.2/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"conver334.github.io","root":"/","images":"/images","scheme":"Muse","version":"8.2.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":"ture","trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
+  </script>
+<meta name="description" content="A . Split it! 题解 从开头和结尾向中间找最长的相同长度 12345678910111213141516171819202122232425#include&lt;bits&#x2F;stdc++.h&gt;using namespace std;const int maxn&#x3D;110;int t,n,k;char s[maxn];bool work(){	if(n&lt;&#x3D;k*2)return">
+<meta property="og:type" content="website">
+<meta property="og:title" content="[CF1496] Codeforces Round #706 (Div. 2)">
+<meta property="og:url" content="https://conver334.github.io/cf1496/index.html">
+<meta property="og:site_name" content="Conver">
+<meta property="og:description" content="A . Split it! 题解 从开头和结尾向中间找最长的相同长度 12345678910111213141516171819202122232425#include&lt;bits&#x2F;stdc++.h&gt;using namespace std;const int maxn&#x3D;110;int t,n,k;char s[maxn];bool work(){	if(n&lt;&#x3D;k*2)return">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://conver334.github.io/images/210312_2.jpg">
+<meta property="article:published_time" content="2021-03-21T02:31:01.000Z">
+<meta property="article:modified_time" content="2021-03-21T03:31:22.345Z">
+<meta property="article:author" content="Conver">
+<meta property="article:tag" content="codeforces">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://conver334.github.io/images/210312_2.jpg">
+
+
+<link rel="canonical" href="https://conver334.github.io/cf1496/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+<title>[CF1496] Codeforces Round #706 (Div. 2) | Conver
+</title>
+  
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end -->
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Conver</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+        <li class="menu-item menu-item-schedule"><a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>日程表</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#a-.-split-it"><span class="nav-number">1.</span> <span class="nav-text">A . Split it!</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#b-.-max-and-mex"><span class="nav-number">2.</span> <span class="nav-text">B . Max and Mex</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#c-.-diamond-miner"><span class="nav-number">3.</span> <span class="nav-text">C . Diamond Miner</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#d-.-lets-go-hiking"><span class="nav-number">4.</span> <span class="nav-text">D . Let&#39;s Go Hiking</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Conver"
+      src="/images/conver.jpg">
+  <p class="site-author-name" itemprop="name">Conver</p>
+  <div class="site-description" itemprop="description">又叒开小号了 ^ _ ^</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/conver334" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;conver334" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/conver334@gmail.com" title="E-Mail → conver334@gmail.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll site-overview-item animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+      友链
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://zzy991212.github.io/" title="https:&#x2F;&#x2F;zzy991212.github.io&#x2F;" rel="noopener" target="_blank">zzy</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://blog.csdn.net/weixin_43811226/" title="https:&#x2F;&#x2F;blog.csdn.net&#x2F;weixin_43811226&#x2F;" rel="noopener" target="_blank">YuanSnowing</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://maomaoyu804.github.io/" title="http:&#x2F;&#x2F;maomaoyu804.github.io" rel="noopener" target="_blank">毛毛雨</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://kongjune.com/" title="http:&#x2F;&#x2F;kongjune.com" rel="noopener" target="_blank">kongjune</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://epeenofront.com/" title="http:&#x2F;&#x2F;epeenofront.com" rel="noopener" target="_blank">epeenofront</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://cardiffle.github.io/" title="https:&#x2F;&#x2F;cardiffle.github.io&#x2F;" rel="noopener" target="_blank">Vicente</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://www.callmelare.cn/blog/" title="http:&#x2F;&#x2F;www.callmelare.cn&#x2F;blog&#x2F;" rel="noopener" target="_blank">Lare</a>
+        </li>
+    </ul>
+  </div>
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner page posts-expand">
+  
+  
+
+
+    
+    
+    
+    <div class="post-block" lang="zh-CN"><header class="post-header">
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<h1 class="post-title" itemprop="name headline">[CF1496] Codeforces Round #706 (Div. 2)
+  <span id="busuanzi_container_page_pv">
+  Viewed<span id="busuanzi_value_page_pv"></span>times
+</span>
+</h1>
+
+<div class="post-meta-container">
+</div>
+
+</header>
+
+      
+      
+      <div class="post-body">
+          <h2 id="a-.-split-it">A . Split it!</h2>
+<p><strong>题解</strong></p>
+<p>从开头和结尾向中间找最长的相同长度</p>
+<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn=<span class="number">110</span>;</span><br><span class="line"><span class="keyword">int</span> t,n,k;</span><br><span class="line"><span class="keyword">char</span> s[maxn];</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">work</span><span class="params">()</span></span>{</span><br><span class="line">	<span class="keyword">if</span>(n&lt;=k*<span class="number">2</span>)<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> l=<span class="number">-1</span>,r=n;</span><br><span class="line">	<span class="keyword">while</span>(l+<span class="number">1</span>&lt;r<span class="number">-1</span> &amp;&amp; s[l+<span class="number">1</span>]==s[r<span class="number">-1</span>]){</span><br><span class="line">		l++;r--;</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">if</span>(l+<span class="number">1</span>&gt;=k)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>{</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;t);</span><br><span class="line">	<span class="keyword">while</span>(t--){</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;k);</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%s"</span>,s);</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span>(work())<span class="built_in">printf</span>(<span class="string">"YES\n"</span>);</span><br><span class="line">		<span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">"NO\n"</span>);</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="b-.-max-and-mex">B . Max and Mex</h2>
+<p><strong>题解</strong>：</p>
+<ol type="1">
+<li>如果mex为n，则每次向后插入mex，k次之后不同的值为n+k个</li>
+<li>如果mex不为n，则每次插入的都是同一个值，如果这个值出现过，k次之后不同的值为n个；如果没出现过，k次之后不同的值为n+1个</li>
+</ol>
+<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn=<span class="number">1e5</span>+<span class="number">10</span>;</span><br><span class="line"><span class="keyword">int</span> t;</span><br><span class="line"><span class="keyword">long</span> <span class="keyword">long</span> n,k,a[maxn];</span><br><span class="line"><span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="title">getmex</span><span class="params">()</span></span>{</span><br><span class="line">	<span class="keyword">int</span> v=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++,v++){</span><br><span class="line">		<span class="keyword">if</span>(v!=a[i])<span class="keyword">return</span> v;</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">return</span> v;</span><br><span class="line">}</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>{</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;t);</span><br><span class="line">	<span class="keyword">while</span>(t--){</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%lld%lld"</span>,&amp;n,&amp;k);</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)<span class="built_in">scanf</span>(<span class="string">"%lld"</span>,&amp;a[i]);</span><br><span class="line">		sort(a+<span class="number">1</span>,a+<span class="number">1</span>+n);</span><br><span class="line">		<span class="keyword">long</span> <span class="keyword">long</span> mex=getmex();</span><br><span class="line">		<span class="keyword">if</span>(mex==n)<span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,n+k);</span><br><span class="line">		<span class="keyword">else</span>{</span><br><span class="line">			<span class="keyword">if</span>(k==<span class="number">0</span>){</span><br><span class="line">				<span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,n);</span><br><span class="line">				<span class="keyword">continue</span>;</span><br><span class="line">			}</span><br><span class="line">			<span class="keyword">long</span> <span class="keyword">long</span>  mid = <span class="built_in">ceil</span>((mex+a[n])/<span class="number">2.0</span>);</span><br><span class="line">			<span class="keyword">if</span>(a[lower_bound(a+<span class="number">1</span>,a+n+<span class="number">1</span>,mid)-a]==mid)<span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,n);</span><br><span class="line">			<span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,n+<span class="number">1</span>);</span><br><span class="line">		}</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="c-.-diamond-miner">C . Diamond Miner</h2>
+<p><strong>题意</strong>：</p>
+<p>n个矿工在y轴上，n个矿在x轴上，一个人挖一个，花费的力气是点之间的欧几里得距离。问如何分配使得总花费最小</p>
+<p><strong>数据范围</strong>：</p>
+<p><span class="math display">\[\left( 1  \leq n \leq 10^{5}\right)\]</span></p>
+<p><strong>题解</strong>：</p>
+<p>绝对值相同的点是等价的，直接用|x||y|来代替x,y</p>
+<p>会发现两个数组排序后，顺着配的值最小，即小的和小的，大的和大的。</p>
+<p>证明方法是<strong>排序不等式</strong>：</p>
+<p>定理：设 <span class="math inline">\(0&lt;a_{1} \leqslant a_{2} \leqslant \cdots \leqslant a_{n}, 0&lt;b_{1} \leqslant b_{2} \leqslant \cdots\leqslant b_{n}\)</span> 为两组实数, <span class="math inline">\(c_{1}, c_{2}, \cdots, c_{n}\)</span> 为 <span class="math inline">\(b_{1}, b_{2}, \cdots, b_{n}\)</span> 的任一排列，则有 <span class="math display">\[
+\begin{array}{l}
+\sqrt{a_{1}^{2}+b_{n}^{2}}+\sqrt{a_{2}^{2}+b_{n-1}^{2}}+\cdots+\sqrt{a_{\mathrm{n}}^{2}+b_{1}^{2}} \\
+\geqslant \sqrt{a_{1}^{2}+c_{1}^{2}}+\sqrt{a_{2}^{2}+c_{2}^{2}}+\cdots+\sqrt{a_{n}^{2}+c_{n}^{2}} \\
+\geqslant \sqrt{a_{1}^{2}+b_{1}^{2}}+\sqrt{a_{2}^{2}+b_{2}^{2}}+\cdots+\sqrt{a_{n}^{2}+b_{n}^{2}}
+\end{array}
+\]</span> 其中全相等 <span class="math inline">\(\Leftrightarrow a_{1}=a_{2}=\cdots=a_{n}\)</span> 或 <span class="math inline">\(b_{1}=b_{2}=\cdots=b_{n} .\)</span></p>
+<p>证明方法，把两个排列相减呗</p>
+<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn=<span class="number">1e5</span>+<span class="number">10</span>;</span><br><span class="line"><span class="keyword">int</span> t, n;</span><br><span class="line"><span class="keyword">long</span> <span class="keyword">long</span> a[maxn],b[maxn];</span><br><span class="line"><span class="keyword">double</span> dis;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>{</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;t);</span><br><span class="line">	<span class="keyword">while</span>(t--){</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">		dis=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">int</span> tot=n*<span class="number">2</span>,tot1=<span class="number">0</span>,tot2=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">long</span> <span class="keyword">long</span> x,y;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=tot;i++){</span><br><span class="line">			<span class="built_in">scanf</span>(<span class="string">"%lld%lld"</span>,&amp;x,&amp;y);</span><br><span class="line">			<span class="keyword">if</span>(x==<span class="number">0</span>)a[++tot1]=<span class="built_in">abs</span>(y);</span><br><span class="line">			<span class="keyword">else</span> b[++tot2]=<span class="built_in">abs</span>(x);</span><br><span class="line">		}</span><br><span class="line">		sort(a+<span class="number">1</span>,a+<span class="number">1</span>+n);</span><br><span class="line">		sort(b+<span class="number">1</span>,b+<span class="number">1</span>+n);</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++){</span><br><span class="line">			dis+=<span class="built_in">sqrt</span>(a[i]*a[i]+b[i]*b[i]);</span><br><span class="line">		}</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%.10lf\n"</span>,dis);</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>补充下关于 <span class="math inline">\(\sum_{i=1}^{n} \sqrt{a_{i}^{2}+b_{i}^{2}}\left(a_{i}, b_{i} \in \mathbf{R}\right)\)</span> 的不等式定理</p>
+<p>柯西不等式： 设 <span class="math inline">\(a_{1}, a_{2}, \cdots, a_{n} ; b_{1}, b_{2}, \cdots, b_{n}\)</span> 为实数, <span class="math inline">\(n \in \mathbf{N}\)</span>,<span class="math inline">\(n \geqslant 2,\)</span> 则 <span class="math inline">\(\sqrt{a_{1}^{2}+b_{1}^{2}}+\sqrt{a_{2}^{2}+b_{2}^{2}}+\cdots+\sqrt{a_{n}^{2}+b_{n}^{2}} \geqslant\)</span> <span class="math inline">\(\sqrt{\left(a_{1}+a_{2}+\cdots+a_{n}\right)^{2}+\left(b_{1}+b_{2}+\cdots+b_{n}\right)^{2}}\)</span> 其中等号成立 <span class="math inline">\(\Leftrightarrow\)</span> 存在非负实数 <span class="math inline">\(\lambda\)</span> 及 <span class="math inline">\(\mu(\lambda, \mu\)</span> 不同时为0)<span class="math inline">\(,\)</span> 使得 <span class="math inline">\(\lambda a_{i}=\mu b_{i}(i=1,2, \cdots, n) .\)</span></p>
+<h2 id="d-.-lets-go-hiking">D . Let's Go Hiking</h2>
+<p>先丢一个队友题解链接：https://blog.csdn.net/weixin_43877657/article/details/114933752</p>
+<p><strong>题意</strong>：</p>
+<p>给出一个长度为n的排列，a先选一个位置，然后b再选一个位置，两人每次都可以向周围移动1位，满足移动后的位置a的值比原来小，b的值比原来小。两人都会采取最优策略，问初始时a选位置能赢的个数</p>
+<p><strong>数据范围</strong>：</p>
+<p><span class="math display">\[\left( 2  \leq n \leq 10^{5}\right)\]</span></p>
+<p><strong>题解</strong>：</p>
+<ol type="1">
+<li>首先a要选在坡顶，坡腰b能把它堵死</li>
+<li>a要选在最大峰的坡顶，否则b能选能大峰的坡地开始走</li>
+<li>这个破必须长度为奇数，a会与b对着走，奇数才能在相会时让b无法走</li>
+<li>不能有其他坡和这个坡长度相同，也就会说这个破不仅最大还唯一，否则b可以走那个</li>
+</ol>
+<p>画个示意图，注意上面4点坑</p>
+<figure>
+<img src="/images/210312_2.jpg" alt="image1"><figcaption aria-hidden="true">image1</figcaption>
+</figure>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">a,b,k=<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split())</span><br><span class="line"><span class="keyword">if</span>(k==<span class="number">0</span>):</span><br><span class="line">    s=<span class="string">'1'</span>*b+<span class="string">'0'</span>*a</span><br><span class="line">    print(<span class="string">"Yes\n"</span>+s+<span class="string">"\n"</span>+s)</span><br><span class="line"><span class="keyword">elif</span>(a==<span class="number">0</span>):</span><br><span class="line">    print(<span class="string">"No"</span>);</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="keyword">if</span> a+b-<span class="number">2</span>&lt;k <span class="keyword">or</span> b==<span class="number">1</span>:</span><br><span class="line">        print(<span class="string">"No"</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        s=<span class="string">'1'</span>*(b-<span class="number">1</span>)+<span class="string">'0'</span>*(a-<span class="number">1</span>)</span><br><span class="line">        print(<span class="string">"Yes"</span>)</span><br><span class="line">        print(s[:a+b-k-<span class="number">1</span>]+<span class="string">'1'</span>+s[a+b-k-<span class="number">1</span>:]+<span class="string">'0'</span>)</span><br><span class="line">        print(s[:a+b-k-<span class="number">1</span>]+<span class="string">'0'</span>+s[a+b-k-<span class="number">1</span>:]+<span class="string">'1'</span>)</span><br><span class="line">        </span><br></pre></td></tr></tbody></table></figure>
+<p><strong>比赛时</strong>：</p>
+<p>那个破不能超过一个没想到qwq</p>
+
+      </div>
+      
+      
+      
+    </div>
+
+    
+    
+
+
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Conver</span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  <script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'none'
+      },
+      options: {
+        renderActions: {
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              const target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    const script = document.createElement('script');
+    script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-mml-chtml.js';
+    script.defer = true;
+    document.head.appendChild(script);
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.typesetClear();
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+
+
+</body>
+</html>
