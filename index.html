@@ -204,7 +204,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-count">8</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -282,6 +282,140 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://conver334.github.io/2021/04/23/cf1514/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/conver.jpg">
+      <meta itemprop="name" content="Conver">
+      <meta itemprop="description" content="又叒开小号了 ^ _ ^">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Conver">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/04/23/cf1514/" class="post-title-link" itemprop="url">[CF1514] Codeforces Round #716 (Div. 2)</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-04-23 09:55:53 / 修改时间：11:32:22" itemprop="dateCreated datePublished" datetime="2021-04-23T09:55:53+08:00">2021-04-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">算法</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="a.-perfectly-imperfect-array">A. Perfectly Imperfect Array</h2>
+<p><strong>题解</strong></p>
+<p>只要任意一个数不是平方数就可以</p>
+<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> <span class="keyword">const</span> maxn=<span class="number">2e5</span>+<span class="number">10</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>{</span><br><span class="line"></span><br><span class="line">	<span class="keyword">int</span> t,n,a,v;</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;t;</span><br><span class="line">	<span class="keyword">while</span>(t--){</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">		<span class="keyword">bool</span> flag=<span class="literal">false</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++){</span><br><span class="line">			<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;a);</span><br><span class="line">			v=<span class="built_in">sqrt</span>(a);</span><br><span class="line">			<span class="keyword">if</span>(v*v!=a)flag=<span class="literal">true</span>;</span><br><span class="line">		}</span><br><span class="line">		<span class="keyword">if</span>(flag)<span class="built_in">printf</span>(<span class="string">"YES\n"</span>);</span><br><span class="line">		<span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">"NO\n"</span>);</span><br><span class="line">	}	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="b-.-and-0-sum-big">B . AND 0, Sum Big</h2>
+<p><strong>题意</strong>：</p>
+<p>给你N和K, 问有多少长度为n的数组满足：</p>
+<ul>
+<li>所有元素在[0,<span class="math inline">\(2^k-1\)</span> ]范围内</li>
+<li>所有元素AND值为0</li>
+<li>所有元素之和尽可能大</li>
+</ul>
+<p><strong>题解</strong>：</p>
+<p>快速幂：二进制k位，只要每一位有一个0就能满足条件2，为了满足条件3每一位只能在数组中的一个数中为0，所以每一位的选择有n个数，答案为<span class="math inline">\(n^k\)</span></p>
+<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">long</span> <span class="keyword">long</span> p=<span class="number">1e9</span>+<span class="number">7</span>;</span><br><span class="line"><span class="keyword">long</span> <span class="keyword">long</span> n,k,t;</span><br><span class="line"><span class="function"><span class="keyword">long</span> <span class="keyword">long</span>  <span class="title">pow_fast</span><span class="params">(<span class="keyword">long</span> <span class="keyword">long</span>  a,<span class="keyword">long</span> <span class="keyword">long</span>  b,<span class="keyword">long</span> <span class="keyword">long</span>  mod)</span></span>{</span><br><span class="line">	<span class="keyword">long</span> <span class="keyword">long</span>  num=<span class="number">1</span>%mod;</span><br><span class="line">	<span class="keyword">for</span>(;b;b&gt;&gt;=<span class="number">1</span>,a=a*a%mod)</span><br><span class="line">	  <span class="keyword">if</span>(b&amp;<span class="number">1</span>)num=num*a%mod;</span><br><span class="line">	<span class="keyword">return</span> num;</span><br><span class="line">}</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>{</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;t;</span><br><span class="line">	<span class="keyword">while</span>(t--){</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%lld%lld"</span>,&amp;n,&amp;k);</span><br><span class="line">		<span class="keyword">long</span> <span class="keyword">long</span> ans=pow_fast(n,k,p);</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,ans);</span><br><span class="line">	}	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="c-.-product-1-modulo-n">C . Product 1 Modulo N</h2>
+<p><strong>题意</strong>：</p>
+<p>给定n，问[1,n-1]范围内，最多可以取多少数，使其乘积取模n为1</p>
+<p><strong>数据范围</strong>：</p>
+<p><span class="math display">\[\left( 2  \leq n \leq 10^{5}\right)\]</span></p>
+<p><strong>题解</strong>：</p>
+<p>首先知道一个结论：如果a，b的最大公约数g=gcd(a,b)不为1，则a%b大于1，因为a%b的余数一定是g的倍数。</p>
+<p>（1） a%b = (a/g) % (b/g) * g</p>
+<p>所以只能选与n互质的数，他们的乘积取余n的结果x也与n互质，x就在刚刚所取的数中，只要把x删掉就行了</p>
+<blockquote>
+<p>证明1： a%b = (a/g) % (b/g) * g</p>
+<p><img src="/images/210423_1.jpg"></p>
+<p><img src="/images/210423_2.jpg"></p>
+<p>证明:2：与b互质的数乘积取余b的余数与b互质</p>
+<p>设 <span class="math inline">\(a_1,a_2,a_3..a_m\)</span> 与b互质 z=a_1<em>a_2</em>a_3 z=n*b+p g=gcd(n,p) n=cg , p=dg z=gcb+dg=g(cb+d) 则 g是 z 的因子，如果g ≠ 1,则n与 z不互质，与题设矛盾</p>
+</blockquote>
+<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">gcd</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span><span class="comment">//最大公约数，辗转相除 </span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">	<span class="keyword">return</span> b?gcd(b,a%b):a;</span><br><span class="line">}</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>{</span><br><span class="line">	<span class="keyword">int</span> n;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">		v.push_back(<span class="number">1</span>);</span><br><span class="line">		<span class="keyword">long</span> <span class="keyword">long</span> tmp=<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">long</span> <span class="keyword">long</span> i=<span class="number">2</span>;i&lt;n;i++){</span><br><span class="line">			<span class="keyword">if</span> (gcd(i,n)==<span class="number">1</span>){<span class="comment">//只能选与n互质的数</span></span><br><span class="line">				v.push_back(i);</span><br><span class="line">				tmp=(<span class="number">1ll</span>*tmp*i)%n;</span><br><span class="line">			} </span><br><span class="line">		}</span><br><span class="line">		<span class="keyword">if</span> (tmp==<span class="number">1ll</span>) <span class="built_in">cout</span>&lt;&lt;v.size()&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">		<span class="keyword">else</span> <span class="built_in">cout</span>&lt;&lt;v.size()<span class="number">-1</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">long</span> <span class="keyword">long</span> i=<span class="number">0</span>;i&lt;v.size();i++){</span><br><span class="line">			<span class="keyword">if</span> (v[i]==tmp&amp;&amp;tmp!=<span class="number">1</span>) <span class="keyword">continue</span>;</span><br><span class="line">			<span class="built_in">cout</span>&lt;&lt;v[i]&lt;&lt;<span class="string">" "</span>;<span class="comment">//余数&gt;1时，把余数删掉</span></span><br><span class="line">		}</span><br><span class="line">		<span class="built_in">cout</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>网上看到的另一种不错证明，<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44178736/article/details/115918245">原文链接</a></p>
+<blockquote>
+<p>不能选与n不互质的数, 因为选了之后%n一定不为1,因为gcd(乘积,n)!=1. 证明: 设gcd(p,n)=z,则p=xz,n=yz, 设选的其他数乘积为q, 则pq%n=1,设pq=kn+1, 那么qxz=kyz+1, (qx-ky)z=1, 当且仅当z=1时式子才有可能成立, 而gcd=z&gt;1,因此式子不可能成立, 所以如果选择了gcd!=1的数,一定不满足条件.</p>
+<p>因此只能选与n互质的数, 设s为所有与n互质的数的积对n取模的结果, 如果s=1,那么这些数全部可以选择, 如果s!=1,此时s一定与n互质,因此s也在这些数中, 那么选除了s的其他数就行了</p>
+</blockquote>
+<h2 id="d.-cut-and-stick">D. Cut and Stick</h2>
+<p><strong>题意</strong>：</p>
+<p>给出长度为n的序列a，q个询问，每次询问[l,r]区间。</p>
+<p>问至少把区间内的数重新组合成几段，才能满足每段众数的次数不超过 <span class="math inline">\(\left \lceil len \right \rceil\)</span> , len为区间长度</p>
+<p><strong>数据范围</strong>：</p>
+<p><span class="math inline">\(\left( 1 \leq n,q \leq 3*10^{5}\right)\)</span></p>
+<p><span class="math inline">\(a_{1}, a_{2, \ldots,} a_{n}\left(1 \leq a_{i} \leq n\right)\)</span></p>
+<p><span class="math inline">\((1 \leq l \leq r \leq n)\)</span></p>
+<p><strong>题解</strong>：</p>
+<ol type="1">
+<li>如果初始区间众数个数&lt; <span class="math inline">\(\left \lceil len \right \rceil\)</span> , 则不用拆，答案为1。否则就要拆，关于每段如何拆分。</li>
+</ol>
+<p>偶→奇+奇 ，可容纳数增加1；奇→偶+奇，可容纳数不变。于是每次就是尽量拆偶数，变化如下</p>
+<p>初始偶→奇+奇→偶+奇+奇→奇+奇+奇+奇→偶+奇++奇+奇+奇...</p>
+<p>初始奇→偶+奇→奇+奇+奇→偶+奇++奇+奇...</p>
+<p>实际上就是初始为偶数多了一步，后面跟奇数一样拆法。每多1个，段数+2。</p>
+<ol start="2" type="1">
+<li>莫队求区间众数，时间复杂度n*sqrt(n)。开一个数组num记录每个数的个数，<strong>数组cou[x]记录数量为x的数有几个</strong>。</li>
+</ol>
+<p>每次区间增加时，增加这个数的个数，维护cou。还有判断增加后是否变成区间众数</p>
+<p>区间变小时，减少这个数的个数，维护cou。看当前众数个数值的cou是否变为0，如果变为0说明当前数为唯一众数，众数个数应该-1。</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#include&lt;bits/stdc++.h&gt;</span></span><br><span class="line">using namespace std;</span><br><span class="line">// <span class="comment">#define debug(x,i) cout&lt;&lt;"haha"&lt;&lt;i&lt;&lt;' '&lt;&lt;x&lt;&lt;endl;</span></span><br><span class="line"><span class="built_in">int</span> const MAXN = <span class="number">3e5</span>+<span class="number">7</span>;</span><br><span class="line"><span class="built_in">int</span> a[MAXN],unit,n,m,nowmax,cnt[MAXN],ans[MAXN],num[MAXN];</span><br><span class="line">struct query1{</span><br><span class="line">    <span class="built_in">int</span> L,R,<span class="built_in">id</span>;</span><br><span class="line">}qu[MAXN];</span><br><span class="line"><span class="built_in">bool</span> cmp(query1 a,query1 b){</span><br><span class="line">    <span class="keyword">if</span>(a.L/unit == b.L/unit)    //相同块，对R排序</span><br><span class="line">        <span class="keyword">return</span> a.R &lt; b.R;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> a.L/unit &lt;b.L/unit; //不同块，对块排序</span><br><span class="line">}</span><br><span class="line">void mo_add(<span class="built_in">int</span> x){</span><br><span class="line">	cnt[num[a[x]]]--;</span><br><span class="line">	num[a[x]]++;</span><br><span class="line">	cnt[num[a[x]]]++;</span><br><span class="line">	<span class="keyword">if</span>(num[a[x]]&gt;nowmax)nowmax=num[a[x]];</span><br><span class="line">}</span><br><span class="line">void mo_del(<span class="built_in">int</span> x){</span><br><span class="line">	cnt[num[a[x]]]--;</span><br><span class="line">	num[a[x]]--;</span><br><span class="line">	cnt[num[a[x]]]++;</span><br><span class="line">	<span class="keyword">if</span>(cnt[nowmax]==<span class="number">0</span>)nowmax--;</span><br><span class="line">}</span><br><span class="line">void work(){</span><br><span class="line">    <span class="built_in">int</span> L = <span class="number">1</span>,R = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="built_in">int</span> i=<span class="number">0</span>;i&lt;m;i++){</span><br><span class="line">        <span class="keyword">while</span>(R &lt; qu[i].R){</span><br><span class="line">            R++;</span><br><span class="line">            mo_add(R);</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">while</span>(R &gt; qu[i].R){</span><br><span class="line">            mo_del(R);</span><br><span class="line">            R--;</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">while</span>(L &lt; qu[i].L){</span><br><span class="line">            mo_del(L);</span><br><span class="line">            L++;</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">while</span>(L &gt; qu[i].L){</span><br><span class="line">            L--;</span><br><span class="line">            mo_add(L);</span><br><span class="line">        }</span><br><span class="line">        // debug(nowmax,<span class="number">1</span>);</span><br><span class="line">     	<span class="keyword">if</span>(nowmax&lt;=ceil((R-L+<span class="number">1</span>)/<span class="number">2.0</span>))ans[qu[i].<span class="built_in">id</span>]=<span class="number">1</span>;</span><br><span class="line">     	<span class="keyword">else</span>{//奇偶不同拆法</span><br><span class="line">     		<span class="built_in">int</span> z=<span class="number">1</span>,<span class="built_in">len</span>=R-L+<span class="number">1</span>,u=nowmax-ceil((R-L+<span class="number">1</span>)/<span class="number">2.0</span>);</span><br><span class="line">     		<span class="keyword">if</span>(<span class="built_in">len</span>%<span class="number">2</span>==<span class="number">0</span>){z++;u--;}</span><br><span class="line">     		<span class="keyword">while</span>(u){</span><br><span class="line">     			z+=<span class="number">2</span>;u--;</span><br><span class="line">     		}</span><br><span class="line">     		ans[qu[i].<span class="built_in">id</span>]=z;</span><br><span class="line">     	}   </span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="built_in">int</span> main(){</span><br><span class="line">   scanf(<span class="string">"%d%d"</span>,&amp;n,&amp;m);</span><br><span class="line">    <span class="keyword">for</span>(<span class="built_in">int</span> i=<span class="number">1</span>;i&lt;=n;i++)scanf(<span class="string">"%d"</span>,&amp;a[i]);</span><br><span class="line">    unit=sqrt(n);</span><br><span class="line">    <span class="keyword">for</span>(<span class="built_in">int</span> i=<span class="number">0</span>;i&lt;m;i++){  //读入查询</span><br><span class="line">        scanf(<span class="string">"%d%d"</span>,&amp;qu[i].L,&amp;qu[i].R);</span><br><span class="line">        qu[i].<span class="built_in">id</span> = i;</span><br><span class="line">    }</span><br><span class="line">    sort(qu,qu+m,cmp);</span><br><span class="line">    work();</span><br><span class="line">    <span class="keyword">for</span>(<span class="built_in">int</span> i=<span class="number">0</span>;i&lt;m;i++){</span><br><span class="line">        printf(<span class="string">"%d\n"</span>,ans[i]);</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p><strong>比赛时</strong>：</p>
+<p>想到了莫队，但是当莫队区间变小时卡住了，忘记了只要再维护一个众数的个数有多少就行了。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 

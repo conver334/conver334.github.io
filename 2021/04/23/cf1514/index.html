@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/Raining64.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/Raining32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/Raining16.png">
+  <link rel="mask-icon" href="/images/Raining64.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.2/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"conver334.github.io","root":"/","images":"/images","scheme":"Muse","version":"8.2.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":"ture","trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
+  </script>
+<meta name="description" content="A. Perfectly Imperfect Array 题解 只要任意一个数不是平方数就可以 1234567891011121314151617181920#include&lt;bits&#x2F;stdc++.h&gt;using namespace std;int const maxn&#x3D;2e5+10;int main(){	int t,n,a,v;	cin&gt;&gt;t;	while(t--){">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[CF1514] Codeforces Round #716 (Div. 2)">
+<meta property="og:url" content="https://conver334.github.io/2021/04/23/cf1514/index.html">
+<meta property="og:site_name" content="Conver">
+<meta property="og:description" content="A. Perfectly Imperfect Array 题解 只要任意一个数不是平方数就可以 1234567891011121314151617181920#include&lt;bits&#x2F;stdc++.h&gt;using namespace std;int const maxn&#x3D;2e5+10;int main(){	int t,n,a,v;	cin&gt;&gt;t;	while(t--){">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://conver334.github.io/images/210423_1.jpg">
+<meta property="og:image" content="https://conver334.github.io/images/210423_2.jpg">
+<meta property="article:published_time" content="2021-04-23T01:55:53.000Z">
+<meta property="article:modified_time" content="2021-04-23T03:32:22.867Z">
+<meta property="article:author" content="Conver">
+<meta property="article:tag" content="codeforces">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://conver334.github.io/images/210423_1.jpg">
+
+
+<link rel="canonical" href="https://conver334.github.io/2021/04/23/cf1514/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+<title>[CF1514] Codeforces Round #716 (Div. 2) | Conver</title>
+  
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end -->
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Conver</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+        <li class="menu-item menu-item-schedule"><a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>日程表</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#a.-perfectly-imperfect-array"><span class="nav-number">1.</span> <span class="nav-text">A. Perfectly Imperfect Array</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#b-.-and-0-sum-big"><span class="nav-number">2.</span> <span class="nav-text">B . AND 0, Sum Big</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#c-.-product-1-modulo-n"><span class="nav-number">3.</span> <span class="nav-text">C . Product 1 Modulo N</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#d.-cut-and-stick"><span class="nav-number">4.</span> <span class="nav-text">D. Cut and Stick</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Conver"
+      src="/images/conver.jpg">
+  <p class="site-author-name" itemprop="name">Conver</p>
+  <div class="site-description" itemprop="description">又叒开小号了 ^ _ ^</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/conver334" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;conver334" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/conver334@gmail.com" title="E-Mail → conver334@gmail.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll site-overview-item animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+      友链
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://zzy991212.github.io/" title="https:&#x2F;&#x2F;zzy991212.github.io&#x2F;" rel="noopener" target="_blank">zzy</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://blog.csdn.net/weixin_43811226/" title="https:&#x2F;&#x2F;blog.csdn.net&#x2F;weixin_43811226&#x2F;" rel="noopener" target="_blank">YuanSnowing</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://maomaoyu804.github.io/" title="http:&#x2F;&#x2F;maomaoyu804.github.io" rel="noopener" target="_blank">毛毛雨</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://kongjune.com/" title="http:&#x2F;&#x2F;kongjune.com" rel="noopener" target="_blank">kongjune</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://epeenofront.com/" title="http:&#x2F;&#x2F;epeenofront.com" rel="noopener" target="_blank">epeenofront</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://cardiffle.github.io/" title="https:&#x2F;&#x2F;cardiffle.github.io&#x2F;" rel="noopener" target="_blank">Vicente</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://www.callmelare.cn/blog/" title="http:&#x2F;&#x2F;www.callmelare.cn&#x2F;blog&#x2F;" rel="noopener" target="_blank">Lare</a>
+        </li>
+    </ul>
+  </div>
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://conver334.github.io/2021/04/23/cf1514/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/conver.jpg">
+      <meta itemprop="name" content="Conver">
+      <meta itemprop="description" content="又叒开小号了 ^ _ ^">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Conver">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          [CF1514] Codeforces Round #716 (Div. 2)
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-04-23 09:55:53 / 修改时间：11:32:22" itemprop="dateCreated datePublished" datetime="2021-04-23T09:55:53+08:00">2021-04-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">算法</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="a.-perfectly-imperfect-array">A. Perfectly Imperfect Array</h2>
+<p><strong>题解</strong></p>
+<p>只要任意一个数不是平方数就可以</p>
+<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> <span class="keyword">const</span> maxn=<span class="number">2e5</span>+<span class="number">10</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>{</span><br><span class="line"></span><br><span class="line">	<span class="keyword">int</span> t,n,a,v;</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;t;</span><br><span class="line">	<span class="keyword">while</span>(t--){</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">		<span class="keyword">bool</span> flag=<span class="literal">false</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++){</span><br><span class="line">			<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;a);</span><br><span class="line">			v=<span class="built_in">sqrt</span>(a);</span><br><span class="line">			<span class="keyword">if</span>(v*v!=a)flag=<span class="literal">true</span>;</span><br><span class="line">		}</span><br><span class="line">		<span class="keyword">if</span>(flag)<span class="built_in">printf</span>(<span class="string">"YES\n"</span>);</span><br><span class="line">		<span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">"NO\n"</span>);</span><br><span class="line">	}	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="b-.-and-0-sum-big">B . AND 0, Sum Big</h2>
+<p><strong>题意</strong>：</p>
+<p>给你N和K, 问有多少长度为n的数组满足：</p>
+<ul>
+<li>所有元素在[0,<span class="math inline">\(2^k-1\)</span> ]范围内</li>
+<li>所有元素AND值为0</li>
+<li>所有元素之和尽可能大</li>
+</ul>
+<p><strong>题解</strong>：</p>
+<p>快速幂：二进制k位，只要每一位有一个0就能满足条件2，为了满足条件3每一位只能在数组中的一个数中为0，所以每一位的选择有n个数，答案为<span class="math inline">\(n^k\)</span></p>
+<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">long</span> <span class="keyword">long</span> p=<span class="number">1e9</span>+<span class="number">7</span>;</span><br><span class="line"><span class="keyword">long</span> <span class="keyword">long</span> n,k,t;</span><br><span class="line"><span class="function"><span class="keyword">long</span> <span class="keyword">long</span>  <span class="title">pow_fast</span><span class="params">(<span class="keyword">long</span> <span class="keyword">long</span>  a,<span class="keyword">long</span> <span class="keyword">long</span>  b,<span class="keyword">long</span> <span class="keyword">long</span>  mod)</span></span>{</span><br><span class="line">	<span class="keyword">long</span> <span class="keyword">long</span>  num=<span class="number">1</span>%mod;</span><br><span class="line">	<span class="keyword">for</span>(;b;b&gt;&gt;=<span class="number">1</span>,a=a*a%mod)</span><br><span class="line">	  <span class="keyword">if</span>(b&amp;<span class="number">1</span>)num=num*a%mod;</span><br><span class="line">	<span class="keyword">return</span> num;</span><br><span class="line">}</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>{</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;t;</span><br><span class="line">	<span class="keyword">while</span>(t--){</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%lld%lld"</span>,&amp;n,&amp;k);</span><br><span class="line">		<span class="keyword">long</span> <span class="keyword">long</span> ans=pow_fast(n,k,p);</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,ans);</span><br><span class="line">	}	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="c-.-product-1-modulo-n">C . Product 1 Modulo N</h2>
+<p><strong>题意</strong>：</p>
+<p>给定n，问[1,n-1]范围内，最多可以取多少数，使其乘积取模n为1</p>
+<p><strong>数据范围</strong>：</p>
+<p><span class="math display">\[\left( 2  \leq n \leq 10^{5}\right)\]</span></p>
+<p><strong>题解</strong>：</p>
+<p>首先知道一个结论：如果a，b的最大公约数g=gcd(a,b)不为1，则a%b大于1，因为a%b的余数一定是g的倍数。</p>
+<p>（1） a%b = (a/g) % (b/g) * g</p>
+<p>所以只能选与n互质的数，他们的乘积取余n的结果x也与n互质，x就在刚刚所取的数中，只要把x删掉就行了</p>
+<blockquote>
+<p>证明1： a%b = (a/g) % (b/g) * g</p>
+<p><img src="/images/210423_1.jpg"></p>
+<p><img src="/images/210423_2.jpg"></p>
+<p>证明:2：与b互质的数乘积取余b的余数与b互质</p>
+<p>设 <span class="math inline">\(a_1,a_2,a_3..a_m\)</span> 与b互质 z=a_1<em>a_2</em>a_3 z=n*b+p g=gcd(n,p) n=cg , p=dg z=gcb+dg=g(cb+d) 则 g是 z 的因子，如果g ≠ 1,则n与 z不互质，与题设矛盾</p>
+</blockquote>
+<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">gcd</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span><span class="comment">//最大公约数，辗转相除 </span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">	<span class="keyword">return</span> b?gcd(b,a%b):a;</span><br><span class="line">}</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>{</span><br><span class="line">	<span class="keyword">int</span> n;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">		v.push_back(<span class="number">1</span>);</span><br><span class="line">		<span class="keyword">long</span> <span class="keyword">long</span> tmp=<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">long</span> <span class="keyword">long</span> i=<span class="number">2</span>;i&lt;n;i++){</span><br><span class="line">			<span class="keyword">if</span> (gcd(i,n)==<span class="number">1</span>){<span class="comment">//只能选与n互质的数</span></span><br><span class="line">				v.push_back(i);</span><br><span class="line">				tmp=(<span class="number">1ll</span>*tmp*i)%n;</span><br><span class="line">			} </span><br><span class="line">		}</span><br><span class="line">		<span class="keyword">if</span> (tmp==<span class="number">1ll</span>) <span class="built_in">cout</span>&lt;&lt;v.size()&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">		<span class="keyword">else</span> <span class="built_in">cout</span>&lt;&lt;v.size()<span class="number">-1</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">long</span> <span class="keyword">long</span> i=<span class="number">0</span>;i&lt;v.size();i++){</span><br><span class="line">			<span class="keyword">if</span> (v[i]==tmp&amp;&amp;tmp!=<span class="number">1</span>) <span class="keyword">continue</span>;</span><br><span class="line">			<span class="built_in">cout</span>&lt;&lt;v[i]&lt;&lt;<span class="string">" "</span>;<span class="comment">//余数&gt;1时，把余数删掉</span></span><br><span class="line">		}</span><br><span class="line">		<span class="built_in">cout</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>网上看到的另一种不错证明，<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44178736/article/details/115918245">原文链接</a></p>
+<blockquote>
+<p>不能选与n不互质的数, 因为选了之后%n一定不为1,因为gcd(乘积,n)!=1. 证明: 设gcd(p,n)=z,则p=xz,n=yz, 设选的其他数乘积为q, 则pq%n=1,设pq=kn+1, 那么qxz=kyz+1, (qx-ky)z=1, 当且仅当z=1时式子才有可能成立, 而gcd=z&gt;1,因此式子不可能成立, 所以如果选择了gcd!=1的数,一定不满足条件.</p>
+<p>因此只能选与n互质的数, 设s为所有与n互质的数的积对n取模的结果, 如果s=1,那么这些数全部可以选择, 如果s!=1,此时s一定与n互质,因此s也在这些数中, 那么选除了s的其他数就行了</p>
+</blockquote>
+<h2 id="d.-cut-and-stick">D. Cut and Stick</h2>
+<p><strong>题意</strong>：</p>
+<p>给出长度为n的序列a，q个询问，每次询问[l,r]区间。</p>
+<p>问至少把区间内的数重新组合成几段，才能满足每段众数的次数不超过 <span class="math inline">\(\left \lceil len \right \rceil\)</span> , len为区间长度</p>
+<p><strong>数据范围</strong>：</p>
+<p><span class="math inline">\(\left( 1 \leq n,q \leq 3*10^{5}\right)\)</span></p>
+<p><span class="math inline">\(a_{1}, a_{2, \ldots,} a_{n}\left(1 \leq a_{i} \leq n\right)\)</span></p>
+<p><span class="math inline">\((1 \leq l \leq r \leq n)\)</span></p>
+<p><strong>题解</strong>：</p>
+<ol type="1">
+<li>如果初始区间众数个数&lt; <span class="math inline">\(\left \lceil len \right \rceil\)</span> , 则不用拆，答案为1。否则就要拆，关于每段如何拆分。</li>
+</ol>
+<p>偶→奇+奇 ，可容纳数增加1；奇→偶+奇，可容纳数不变。于是每次就是尽量拆偶数，变化如下</p>
+<p>初始偶→奇+奇→偶+奇+奇→奇+奇+奇+奇→偶+奇++奇+奇+奇...</p>
+<p>初始奇→偶+奇→奇+奇+奇→偶+奇++奇+奇...</p>
+<p>实际上就是初始为偶数多了一步，后面跟奇数一样拆法。每多1个，段数+2。</p>
+<ol start="2" type="1">
+<li>莫队求区间众数，时间复杂度n*sqrt(n)。开一个数组num记录每个数的个数，<strong>数组cou[x]记录数量为x的数有几个</strong>。</li>
+</ol>
+<p>每次区间增加时，增加这个数的个数，维护cou。还有判断增加后是否变成区间众数</p>
+<p>区间变小时，减少这个数的个数，维护cou。看当前众数个数值的cou是否变为0，如果变为0说明当前数为唯一众数，众数个数应该-1。</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#include&lt;bits/stdc++.h&gt;</span></span><br><span class="line">using namespace std;</span><br><span class="line">// <span class="comment">#define debug(x,i) cout&lt;&lt;"haha"&lt;&lt;i&lt;&lt;' '&lt;&lt;x&lt;&lt;endl;</span></span><br><span class="line"><span class="built_in">int</span> const MAXN = <span class="number">3e5</span>+<span class="number">7</span>;</span><br><span class="line"><span class="built_in">int</span> a[MAXN],unit,n,m,nowmax,cnt[MAXN],ans[MAXN],num[MAXN];</span><br><span class="line">struct query1{</span><br><span class="line">    <span class="built_in">int</span> L,R,<span class="built_in">id</span>;</span><br><span class="line">}qu[MAXN];</span><br><span class="line"><span class="built_in">bool</span> cmp(query1 a,query1 b){</span><br><span class="line">    <span class="keyword">if</span>(a.L/unit == b.L/unit)    //相同块，对R排序</span><br><span class="line">        <span class="keyword">return</span> a.R &lt; b.R;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> a.L/unit &lt;b.L/unit; //不同块，对块排序</span><br><span class="line">}</span><br><span class="line">void mo_add(<span class="built_in">int</span> x){</span><br><span class="line">	cnt[num[a[x]]]--;</span><br><span class="line">	num[a[x]]++;</span><br><span class="line">	cnt[num[a[x]]]++;</span><br><span class="line">	<span class="keyword">if</span>(num[a[x]]&gt;nowmax)nowmax=num[a[x]];</span><br><span class="line">}</span><br><span class="line">void mo_del(<span class="built_in">int</span> x){</span><br><span class="line">	cnt[num[a[x]]]--;</span><br><span class="line">	num[a[x]]--;</span><br><span class="line">	cnt[num[a[x]]]++;</span><br><span class="line">	<span class="keyword">if</span>(cnt[nowmax]==<span class="number">0</span>)nowmax--;</span><br><span class="line">}</span><br><span class="line">void work(){</span><br><span class="line">    <span class="built_in">int</span> L = <span class="number">1</span>,R = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="built_in">int</span> i=<span class="number">0</span>;i&lt;m;i++){</span><br><span class="line">        <span class="keyword">while</span>(R &lt; qu[i].R){</span><br><span class="line">            R++;</span><br><span class="line">            mo_add(R);</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">while</span>(R &gt; qu[i].R){</span><br><span class="line">            mo_del(R);</span><br><span class="line">            R--;</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">while</span>(L &lt; qu[i].L){</span><br><span class="line">            mo_del(L);</span><br><span class="line">            L++;</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">while</span>(L &gt; qu[i].L){</span><br><span class="line">            L--;</span><br><span class="line">            mo_add(L);</span><br><span class="line">        }</span><br><span class="line">        // debug(nowmax,<span class="number">1</span>);</span><br><span class="line">     	<span class="keyword">if</span>(nowmax&lt;=ceil((R-L+<span class="number">1</span>)/<span class="number">2.0</span>))ans[qu[i].<span class="built_in">id</span>]=<span class="number">1</span>;</span><br><span class="line">     	<span class="keyword">else</span>{//奇偶不同拆法</span><br><span class="line">     		<span class="built_in">int</span> z=<span class="number">1</span>,<span class="built_in">len</span>=R-L+<span class="number">1</span>,u=nowmax-ceil((R-L+<span class="number">1</span>)/<span class="number">2.0</span>);</span><br><span class="line">     		<span class="keyword">if</span>(<span class="built_in">len</span>%<span class="number">2</span>==<span class="number">0</span>){z++;u--;}</span><br><span class="line">     		<span class="keyword">while</span>(u){</span><br><span class="line">     			z+=<span class="number">2</span>;u--;</span><br><span class="line">     		}</span><br><span class="line">     		ans[qu[i].<span class="built_in">id</span>]=z;</span><br><span class="line">     	}   </span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="built_in">int</span> main(){</span><br><span class="line">   scanf(<span class="string">"%d%d"</span>,&amp;n,&amp;m);</span><br><span class="line">    <span class="keyword">for</span>(<span class="built_in">int</span> i=<span class="number">1</span>;i&lt;=n;i++)scanf(<span class="string">"%d"</span>,&amp;a[i]);</span><br><span class="line">    unit=sqrt(n);</span><br><span class="line">    <span class="keyword">for</span>(<span class="built_in">int</span> i=<span class="number">0</span>;i&lt;m;i++){  //读入查询</span><br><span class="line">        scanf(<span class="string">"%d%d"</span>,&amp;qu[i].L,&amp;qu[i].R);</span><br><span class="line">        qu[i].<span class="built_in">id</span> = i;</span><br><span class="line">    }</span><br><span class="line">    sort(qu,qu+m,cmp);</span><br><span class="line">    work();</span><br><span class="line">    <span class="keyword">for</span>(<span class="built_in">int</span> i=<span class="number">0</span>;i&lt;m;i++){</span><br><span class="line">        printf(<span class="string">"%d\n"</span>,ans[i]);</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p><strong>比赛时</strong>：</p>
+<p>想到了莫队，但是当莫队区间变小时卡住了，忘记了只要再维护一个众数的个数有多少就行了。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/codeforces/" rel="tag"># codeforces</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/03/21/cf1496/" rel="prev" title="[CF1496] Codeforces Round #706 (Div. 2)">
+                  <i class="fa fa-chevron-left"></i> [CF1496] Codeforces Round #706 (Div. 2)
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Conver</span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  <script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'none'
+      },
+      options: {
+        renderActions: {
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              const target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    const script = document.createElement('script');
+    script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-mml-chtml.js';
+    script.defer = true;
+    document.head.appendChild(script);
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.typesetClear();
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+
+
+</body>
+</html>
