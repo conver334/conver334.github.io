@@ -30,14 +30,14 @@
 <meta property="og:site_name" content="Conver">
 <meta property="og:description" content="面试流程 阿里的面试持续了1月左右，一共四轮，十分漫长。校招投递时间3月中旬，期间因为有考试麻烦了考官帮我延期3周，如果按照正常进度一周一面的话应该4月初结束。 一面（电话面）→笔试（在线测试）→二面（电话面）→三面（电话面）→四面（视频面） 一面 1小时，在笔试之前先面试是万万没想到的，可能因为是内推 问题：  自我介绍 描述TCP和UDP区别 进程和线程区别 java内线程通信如何实现 能讲一">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/45016e98-6879-4709-8569-262b2d6d60b9.png">
-<meta property="og:image" content="d:/web/blog/conver/source/images/210430_1.jpg">
+<meta property="og:image" content="https://conver334.github.io/images/210430_2.jpg">
+<meta property="og:image" content="https://conver334.github.io/images/210430_1.jpg">
 <meta property="article:published_time" content="2021-04-30T07:18:03.000Z">
-<meta property="article:modified_time" content="2021-05-07T14:16:48.967Z">
+<meta property="article:modified_time" content="2021-05-07T16:27:49.543Z">
 <meta property="article:author" content="Conver">
 <meta property="article:tag" content="面经">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/45016e98-6879-4709-8569-262b2d6d60b9.png">
+<meta name="twitter:image" content="https://conver334.github.io/images/210430_2.jpg">
 
 
 <link rel="canonical" href="https://conver334.github.io/2021/04/30/aliinterview/">
@@ -330,7 +330,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-05-07 22:16:48" itemprop="dateModified" datetime="2021-05-07T22:16:48+08:00">2021-05-07</time>
+        <time title="修改时间：2021-05-08 00:27:49" itemprop="dateModified" datetime="2021-05-08T00:27:49+08:00">2021-05-08</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -453,22 +453,27 @@
 <p>索引是加快了查询。</p>
 <p>数据库的索引实现是数据结构b+ 树。b+树非叶子结点不存储data，只存储索引，可以存放更多的索引叶子结点包含所有索引字段叶子结点用指针连接，提高区间访问的性能。</p>
 <p>innodb的索引是聚簇索引，主索引的叶子节点 data 域记录着完整的数据记录，这种索引方式被称为聚簇索引。因为无法把数据行存放在两个不同的地方，所以一个表只能有一个聚簇索引。辅助索引的叶子节点的 data 域记录着主键的值，因此在使用辅助索引进行查找时，需要先查找到主键值，然后再到主索引中进行查找。</p>
+</blockquote></li>
+</ol>
 <figure>
-<img src="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/45016e98-6879-4709-8569-262b2d6d60b9.png" alt="img"><figcaption aria-hidden="true">img</figcaption>
+<img src="/images/210430_2.jpg" alt="image1"><figcaption aria-hidden="true">image1</figcaption>
 </figure>
+<blockquote>
 <p>MyISAM是非聚簇索引，叶子节点上不存储数据。</p>
 <p>关于联合索引，要注意建立索引时遵循左匹配原理。将区分度高的字段放在前面，区分度低的字段放后面。像性别、状态这种字段区分度就很低，我们一般放后面。</p>
-</blockquote></li>
+</blockquote>
+<ol start="6" type="1">
 <li><p>讲一下JVM虚拟机</p>
 <blockquote>
 <p>java成为跨平台语言的关键</p>
 <p>所有线程共享的部分有：java堆，方法区</p>
 <p>每个线程私有的是：pc寄存器，java虚拟机栈，本地方法栈</p>
-<p>各部分的功能详情见：http://www.cyc2018.xyz/Java/Java%20%E8%99%9A%E6%8B%9F%E6%9C%BA.html#%E4%B8%80%E3%80%81%E8%BF%90%E8%A1%8C%E6%97%B6%E6%95%B0%E6%8D%AE%E5%8C%BA%E5%9F%9F</p>
-<figure>
-<img src="D:\web\blog\conver\source\images\210430_1.jpg" alt="image-20210414191106484"><figcaption aria-hidden="true">image-20210414191106484</figcaption>
-</figure>
+<p>各部分的功能详情见：</p>
+<p><a target="_blank" rel="noopener" href="http://www.cyc2018.xyz/Java/Java%20%E8%99%9A%E6%8B%9F%E6%9C%BA.html#%E4%B8%80%E3%80%81%E8%BF%90%E8%A1%8C%E6%97%B6%E6%95%B0%E6%8D%AE%E5%8C%BA%E5%9F%9F">链接</a></p>
 </blockquote></li>
+</ol>
+<p><img src="/images/210430_1.jpg"></p>
+<ol start="7" type="1">
 <li><p>两道算法题，用阿里的伯乐系统在线做</p>
 <ul>
 <li><p>7-1 找一棵树中距离最远的两点距离</p>
@@ -549,8 +554,8 @@
 <li><p>数据库的并发一致性问题，例如丢失修改，读脏数据，不可重复读，幻影读</p></li>
 <li><p>你本科最擅长的科目？根据回答会问相应问题，我回答了操作系统和数据结构，接下来用在线评测系统写代码</p>
 <ul>
-<li><p>5-1 实现生产者消费者。是多线程通信的例子</p>
-<p>http://www.cyc2018.xyz/Java/Java%20%E5%B9%B6%E5%8F%91.html#%E6%97%A0%E5%90%8C%E6%AD%A5%E6%96%B9%E6%A1%88</p>
+<li><p>5-1 实现生产者消费者。是多线程通信的例子</p></li>
+<li><p><a target="_blank" rel="noopener" href="http://www.cyc2018.xyz/Java/Java%20%E5%B9%B6%E5%8F%91.html#%E6%97%A0%E5%90%8C%E6%AD%A5%E6%96%B9%E6%A1%88">链接</a></p>
 <p>哎。当时没写出来，好难啊。先鸽了，以后补上！</p></li>
 <li><p>5-2 每步可以走1 或 2 级台阶，有 n个台阶，问多少种走法。要求写注释，排版好看点。。。</p>
 <blockquote>
@@ -612,13 +617,15 @@
 <p>1.基础知识学习。</p>
 <p>2.看视频，理解技术细节。</p>
 <p>3.刷面经，对着题目回答。</p>
-<p>基础知识复习参考：http://www.cyc2018.xyz/#%E7%AE%97%E6%B3%95</p>
+<p>基础知识复习参考：</p>
+<p>http://www.cyc2018.xyz/#%E7%AE%97%E6%B3%95</p>
 <p>细节讲解，有很多不错的b站教程：</p>
 <p>https://www.bilibili.com/video/BV1c4411d7jb?p=44&amp;t=661</p>
 <p>https://www.bilibili.com/video/BV14z4y1d7Wa?t=912</p>
 <p>https://www.bilibili.com/video/BV1aE41117sk?p=8&amp;t=1023</p>
 <p>https://www.bilibili.com/video/BV1Wr4y1A7DS</p>
-<p>面经：牛客网，很多面经。https://www.nowcoder.com/discuss/620617?channel=-1&amp;source_id=discuss_terminal_discuss_history_nctrack&amp;ncTraceId=0de4c2957e304ce1b6b8fb84384fbd59.956.16182236949048605</p>
+<p>面经：牛客网，很多面经。</p>
+<p>https://www.nowcoder.com/discuss/620617?channel=-1&amp;source_id=discuss_terminal_discuss_history_nctrack&amp;ncTraceId=0de4c2957e304ce1b6b8fb84384fbd59.956.16182236949048605</p>
 <p>复习了1周左右，难受的是感觉东西越学越多，java不咋会写，还要学spring框架，操作系统的算法看了就忘。期间收藏了不少好课，十足的好课，可惜我大学前两年学基础时没有干脆自己看网课学这些。例如湖科的b站计网课，还有清华向勇老师的操作系统，可惜当年不知道，想今年有机会把这些看完。</p>
 <p>第二、三、四面都意识流偏多，考官很喜欢聊科研中的细节，因为2年产品经理，每个考官都有和我聊到产品，还有4场面试中，3场都有算法题，感谢大学加入了天外天和acm，大一不经意做出的选择悄然间改变了发展的轨迹。</p>
 <p>参加实习面试的还有一件影响就是它让我开始回顾自己。一是，接受自己很菜的事实，从高中起身边就已经有了让我仰慕的学术idol，都是在自己领域做的闪闪发光的人，他们的很多博客，记录都有影响到我追着脚步一点点前进；二是，感谢和珍重曾经做的每一次选择，大一刚入学的时候真的很迷茫，那时候我甚至一口气在百团大战报过10个社团，我大概属于对自己的未来规划有方向，却对具体实施不太清醒的人，大二的时候才明白，重点在于做减法而不是做加法，做好一件事足矣，只留下了天外天和acm，回想9.1日开学喻老师把我们召集起来开始布置acm训练，和9.31日坐在天外天的面试官前什么都不懂的我，肯定不知道悄然改变了3年后的自己。</p>
